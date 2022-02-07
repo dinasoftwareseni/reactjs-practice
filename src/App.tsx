@@ -1,12 +1,10 @@
-import React from 'react';
-import logo from './logo.svg';
-
+import ReapitItems from './components/ReapitItems';
 import './App.css';
-import {Table,TableHead,TableRow,TableHeader,TableBody,TableCell} from 'carbon-components-react';
+// import {Table,TableHead,TableRow,TableHeader,TableBody,TableCell} from 'carbon-components-react';
 
 function App() {
 
-  const rows =[
+  const dataArticle =[
           {
               source: {
                   id: "wired",
@@ -272,28 +270,32 @@ function App() {
   const headers = ['source', 'title', 'description','url','urlToImage','publishedAd','content'];
 
   return (
-    <Table>
-        <TableHead>
-            <TableRow>
-              {headers.map((header) => (
-                <TableHeader id={header} key={header}>
-                  {header}
-                </TableHeader>
-              ))}
-            </TableRow>
-        </TableHead>
-        <TableBody>
-        {rows.map((row) => (
-          <TableRow key={row.source.name}>
-            {Object.keys(row)
-              .filter((key) => key !== 'id')
-              .map((key) => {
-                return <TableCell key={key}>{row}</TableCell>;
-              })}
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+      <div>
+          <ReapitItems title={dataArticle[0].title} description={dataArticle[0].description} publishedAt={dataArticle[0].publishedAt}></ReapitItems>
+      </div>
+    //   <div>tes</div>
+    // <Table>
+    //     <TableHead>
+    //         <TableRow>
+    //           {headers.map((header) => (
+    //             <TableHeader id={header} key={header}>
+    //               {header}
+    //             </TableHeader>
+    //           ))}
+    //         </TableRow>
+    //     </TableHead>
+    //     <TableBody>
+    //     {rows.map((row) => (
+    //       <TableRow key={row.source.name}>
+    //         {Object.keys(row)
+    //           .filter((key) => key !== 'id')
+    //           .map((key) => {
+    //             return <TableCell key={key}>{row}</TableCell>;
+    //           })}
+    //       </TableRow>
+    //     ))}
+    //   </TableBody>
+    // </Table>
   );
 }
 

@@ -7,7 +7,6 @@ import './Reapititems.css';
 const ReapitItems: React.FC<{headers: ReapitHeader[],articles: ReapitArticle[]}> = (props) => {
 
     return(
-        // <ul>{props.items.map(item=><li key={item.id}>{item.text}</li>)}</ul>
         <Table className="table">
             <TableHead className="thead">
                 <TableRow>

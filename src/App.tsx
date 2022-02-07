@@ -9,7 +9,8 @@ function App() {
       new ReapitHeader('Published At'),
       new ReapitHeader('Description'),
       new ReapitHeader('Content'),
-      new ReapitHeader('Url')
+      new ReapitHeader('Url'),
+      new ReapitHeader('Action')
   ]; 
   
   const reapitarticle=[
@@ -35,6 +36,7 @@ function App() {
 
   return (
       <div>
+          <h1>News - Everything</h1>
           <ReapitItems headers={reapitheaders} articles={reapitarticle}/>
       </div>
   );

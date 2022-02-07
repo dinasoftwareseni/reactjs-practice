@@ -1,6 +1,6 @@
 import React from 'react';
 import ReapitHeader from '../models/reapitheader';
-import {Table,TableHead,TableRow,TableHeader,TableBody,TableCell} from 'carbon-components-react';
+import {Table,TableHead,TableRow,TableHeader,TableBody,TableCell,Button} from 'carbon-components-react';
 import ReapitArticle from '../models/reapitarticle';
 import './Reapititems.css';
 
@@ -10,21 +10,22 @@ const ReapitItems: React.FC<{headers: ReapitHeader[],articles: ReapitArticle[]}>
         <Table className="table">
             <TableHead className="thead">
                 <TableRow>
-                {props.headers.map((header) => (
-                    <TableHeader id={header.id} key={header.id}>
-                        {header.text}
-                    </TableHeader>
-                ))}
+                    {props.headers.map((header) => (
+                        <TableHeader id={header.id} key={header.id}>
+                            {header.text}
+                        </TableHeader>
+                    ))}
                 </TableRow>
             </TableHead>
             <TableBody className="tbody">
             {props.articles.map((article) => (
-                <TableRow key={article.id}>
-                    <TableCell>{article.title}</TableCell>
-                    <TableCell>{article.publishAt}</TableCell>
-                    <TableCell>{article.description}</TableCell>
-                    <TableCell>{article.content}</TableCell>
-                    <TableCell>{article.url}</TableCell>
+                <TableRow className="trow" key={article.id}>
+                    <TableCell className="tcell">{article.title}</TableCell>
+                    <TableCell className="tcell">{article.publishAt}</TableCell>
+                    <TableCell className="tcell">{article.description}</TableCell>
+                    <TableCell className="tcell">{article.content}</TableCell>
+                    <TableCell className="tcell">{article.url}</TableCell>
+                    <TableCell className="tcell"><Button>Edit Me</Button></TableCell>
                 </TableRow>
             ))}
 

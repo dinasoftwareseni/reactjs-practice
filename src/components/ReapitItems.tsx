@@ -2,13 +2,14 @@ import React from 'react';
 import ReapitHeader from '../models/reapitheader';
 import {Table,TableHead,TableRow,TableHeader,TableBody,TableCell} from 'carbon-components-react';
 import ReapitArticle from '../models/reapitarticle';
+import './Reapititems.css';
 
 const ReapitItems: React.FC<{headers: ReapitHeader[],articles: ReapitArticle[]}> = (props) => {
 
     return(
         // <ul>{props.items.map(item=><li key={item.id}>{item.text}</li>)}</ul>
         <Table>
-            <TableHead>
+            <TableHead className="thead">
                 <TableRow>
                 {props.headers.map((header) => (
                     <TableHeader id={header.id} key={header.id}>
@@ -17,15 +18,14 @@ const ReapitItems: React.FC<{headers: ReapitHeader[],articles: ReapitArticle[]}>
                 ))}
                 </TableRow>
             </TableHead>
-            <TableBody>
+            <TableBody className="tbody">
             {props.articles.map((article) => (
                 <TableRow key={article.id}>
-                    {Object.keys(article)
-                        .filter((key) => key !== 'id')
-                        .map((key) => {
-                            return <TableCell key={key}>{article.publishAt}</TableCell>;
-                        })
-                    }
+                    <TableCell>{article.title}</TableCell>
+                    <TableCell>{article.publishAt}</TableCell>
+                    <TableCell>{article.description}</TableCell>
+                    <TableCell>{article.content}</TableCell>
+                    <TableCell>{article.url}</TableCell>
                 </TableRow>
             ))}
 

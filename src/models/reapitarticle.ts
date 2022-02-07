@@ -6,12 +6,12 @@ class ReapitArticle{
     content: string;
     url: string;
 
-    constructor(reapitarticleText:string){
-        this.title = reapitarticleText;
-        this.publishAt = reapitarticleText;
-        this.description = reapitarticleText;
-        this.content = reapitarticleText;
-        this.url = reapitarticleText;
+    constructor(obj:{reapitarticleTitle:string,reapitarticlePublishAt:string,reapitarticleDescription:string,reapitarticleContent:string,reapitarticleUrl:string}){
+        this.title = obj.reapitarticleTitle;
+        this.publishAt = obj.reapitarticlePublishAt;
+        this.description = obj.reapitarticleDescription;
+        this.content = obj.reapitarticleContent;
+        this.url = obj.reapitarticleUrl;
         this.id = new Date().toISOString();
     }
 }

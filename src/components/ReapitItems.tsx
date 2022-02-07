@@ -8,7 +8,7 @@ const ReapitItems: React.FC<{headers: ReapitHeader[],articles: ReapitArticle[]}>
 
     return(
         // <ul>{props.items.map(item=><li key={item.id}>{item.text}</li>)}</ul>
-        <Table>
+        <Table className="table">
             <TableHead className="thead">
                 <TableRow>
                 {props.headers.map((header) => (

@@ -1,6 +1,8 @@
+import React,{useState} from 'react';
 import ReapitItems from './components/ReapitItems';
 import ReapitHeader from './models/reapitheader';
 import ReapitArticle from './models/reapitarticle';
+import { NewsContextProvider } from './store/newsContext';
 
 function App() {
 
@@ -34,11 +36,18 @@ function App() {
         ),
     ]; 
 
+//  const [reapitarticle] = useState<ReapitArticle[]>([]);
+
   return (
       <div>
-          <h1>News - Everything</h1>
-          <ReapitItems headers={reapitheaders} articles={reapitarticle}/>
+          {/* <h1>News - Everything</h1>
+          <ReapitItems headers={reapitheaders} articles={reapitarticle}/> */}
+
+          <NewsContextProvider>
+              Tes
+          </NewsContextProvider>
       </div>
+    
   );
 }
 

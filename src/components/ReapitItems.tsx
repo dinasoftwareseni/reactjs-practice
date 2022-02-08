@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import ReapitHeader from '../models/reapitheader';
 import {Table,TableHead,TableRow,TableHeader,TableBody,TableCell,Button} from 'carbon-components-react';
 import ReapitArticle from '../models/reapitarticle';
+import { NewsContext } from '../store/newsContext';
 import './Reapititems.css';
 
 const ReapitItems: React.FC<{headers: ReapitHeader[],articles: ReapitArticle[]}> = (props) => {
+// const ReapitItems: React.FC = () => {
+    const newsCtx = useContext(NewsContext);
 
     return(
         <Table className="table">

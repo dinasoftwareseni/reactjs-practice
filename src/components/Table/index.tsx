@@ -1,29 +1,61 @@
-import React, { useState } from 'react';
-import { Table as CarbonTable, TableHead, TableRow, TableHeader, TableBody, TableCell, Button } from 'carbon-components-react';
+import React, { useState, MouseEvent } from 'react';
+import { Table as CarbonTable, TableHead, TableRow, TableHeader, TableBody, TableCell, Button, Modal } from 'carbon-components-react';
 import {TableHeader as ITableHeader, TableArticle as ITableArticle, TableProps } from './table';
 import './style.css';
+// import ModalWrapper from '../Modal/ModalWrapper';
+import {ModalEdit} from '../Modal/ModalEdit';
+
+// interface ArticleState {
+//   message: string;
+//   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+// }
 
 const Table: React.FC<TableProps> = (props) => {
 
-  const [article, setArticle] = useState({ 
-    title: 'tessss', 
-    author: 'author tes', 
-    description: '', 
-    content:'',
-    publishedAt:'' 
-  });
+  // const [isModalVisible, setIsModalVisible] = useState(false)
+  const [isModalOpen,setModalState]=useState(false);
 
-  const [clickedButton, setClickedButton] = useState('');
+  // const [article, setArticle] = useState({ 
+  //   title: '', 
+  //   author: '', 
+  //   description: '', 
+  //   content:'',
+  //   publishedAt:'' 
+  // });
 
-  console.log(props.articles)
+  const toggleModal =()=>{
+    // setIsModalVisible(wasModalVisible=>!wasModalVisible)
+    // console.log('modal jalan')
+    setModalState(!isModalOpen);
+  }
 
-  let author = article.author
+  
+  // console.log(props.articles)
+
+  // let author = article.author
 
   const clickHandler=()=>{
     console.log('tes')
   }
 
-  
+  // const clickHandler = (e: React.FormEvent<HTMLInputElement>): void => {
+  //   this.setArticle({ author: e.currentTarget.value });
+  // };
+
+  // onChange = (e: React.FormEvent<HTMLInputElement>): void => {
+  //   this.setState({ text: e.currentTarget.value });
+  // };
+
+  // handleClick(e: React.ChangeEvent<HTMLInputElement>) {
+  //   // No longer need to cast to any - hooray for react!
+  //   this.setState({temperature: e.target.value});
+  // }
+
+  // const handleClick = (e: MouseEvent): void => {
+  //   e.preventDefault();
+  //   alert(`Clicked at ${e}`);
+  // }
+
 
   return (
     <CarbonTable className="table">
@@ -48,7 +80,13 @@ const Table: React.FC<TableProps> = (props) => {
               </TableCell>
             ))}
             <TableCell className="tcell">
-              <Button onClick={()=>clickHandler()}>Edit Me</Button>
+              <Button onClick={toggleModal}>
+                Edit Me
+              </Button>
+              {/* <ModalWrapper isModalVisible={isModalVisible} onBackdropClick={toggleModal}/> */}
+              <ModalEdit title={'My Modal'} isOpen={isModalOpen} onClose={toggleModal}>
+                Tes Modal
+              </ModalEdit>
             </TableCell>
           </TableRow>
         ))}

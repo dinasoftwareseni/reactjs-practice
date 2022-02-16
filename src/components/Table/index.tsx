@@ -9,37 +9,30 @@ const Table: React.FC<TableProps> = (props) => {
 
   const [isModalOpen,setModalState]=useState(false);
 
-  // const [article, setArticle] = useState({ 
-  //   title: '', 
-  //   author: '', 
-  //   description: '', 
-  //   content:'',
-  //   publishedAt:'' 
-  // });
-
-  // const [data, setData] = useState<ITableArticle[]>([]);
-
-
   const [newTitle, setNewTitle] = useState('');
   const [newAuthor, setNewAuthor] = useState('');
   const [newDescription,setNewDescription]=useState('');
   const [newContent,setNewContent]=useState('');
   const [newPublishedAt,setNewPublishedAt]=useState('');
-  // const [author, setAuthor] = useState<ITableArticle[]>([]);
+  
+  // const toggleModal =()=>{
+  //   setModalState(!isModalOpen);
+  //   setNewTitle('Update Data');
+  //   setNewAuthor('Tes New Author');
+  //   setNewDescription('Tes New Description');
+  //   setNewContent('Tes New Content');
+  //   setNewPublishedAt('Tes New Published At');
+  // }
 
-  const toggleModal =()=>{
+  const toggleModal =(e : any)=>{
     setModalState(!isModalOpen);
-    setNewTitle('Tes New Title');
-    setNewAuthor('Tes New Author');
-    setNewDescription('Tes New Description');
-    setNewContent('Tes New Content');
-    setNewPublishedAt('Tes New Published At');
+    setNewTitle(e.title);
+    setNewAuthor(e.author);
+    setNewDescription(e.description);
+    setNewContent(e.content);
+    setNewPublishedAt(e.publishedAt);
   }
 
-  // const toggleModal=({el: ITableArticle})=> {
-  //   setModalState(!isModalOpen);
-  //   setData([...data, el]);
-  // }
 
   return (
     <CarbonTable className="table">
@@ -55,7 +48,7 @@ const Table: React.FC<TableProps> = (props) => {
             </TableHeader>
         </TableRow>
       </TableHead>
-      <TableBody className="tbody">
+      {/* <TableBody className="tbody">
         {props.articles?.map((article: ITableArticle, index: number) => (
           <TableRow className="trow" key={`${index}-${article.author}`}>
             {props.headers.map((header: ITableHeader) => (
@@ -78,6 +71,30 @@ const Table: React.FC<TableProps> = (props) => {
                 <p>Published At: {newPublishedAt}</p>
               </ModalEdit>
             </TableCell>
+          </TableRow>
+        ))}
+      </TableBody> */}
+
+      <TableBody className="tbody">
+        {props.articles?.map((article:ITableArticle, index: number) => (
+          <TableRow className="trow" key={index}>
+            <TableCell className="tcell">{article.title}</TableCell>
+            <TableCell className="tcell">{article.author}</TableCell>
+            <TableCell className="tcell">{article.description}</TableCell>
+            <TableCell className="tcell">{article.content}</TableCell>
+            <TableCell className="tcell">{article.publishedAt}</TableCell>
+            <TableCell className="tcell"><Button onClick={()=>toggleModal(article)}>Edit Me</Button></TableCell>
+            <ModalEdit 
+                title={newTitle} 
+                isOpen={isModalOpen} 
+                onClose={()=>{setModalState(!isModalOpen)}}
+              >
+                {/* <p>Title: {newTitle}</p> */}
+                <p>Author: {newAuthor}</p>
+                <p>Description: {newDescription}</p>
+                <p>Content: {newContent}</p>
+                <p>Published At: {newPublishedAt}</p>
+              </ModalEdit>
           </TableRow>
         ))}
       </TableBody>

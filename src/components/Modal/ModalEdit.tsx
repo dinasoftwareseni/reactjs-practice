@@ -17,6 +17,8 @@ export const ModalEdit:React.FC<ModalProps>=({title,isOpen,onClose,children})=>{
         }
     }
 
+    // return(null)
+
     return isOpen?(
         <div className={'modal'}>
             <div className={'modal__overlay'} onClick={handleOverlayClick}/>

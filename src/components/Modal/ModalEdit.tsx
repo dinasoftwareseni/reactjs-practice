@@ -1,6 +1,6 @@
 import React from 'react';
 import closeIcon from '../../images/close.svg';
-import './ModalEdit.css';
+import './ModalEdit.scss';
 
 interface ModalProps{
     title:string;
@@ -16,8 +16,6 @@ export const ModalEdit:React.FC<ModalProps>=({title,isOpen,onClose,children})=>{
             onClose();
         }
     }
-
-    // return(null)
 
     return isOpen?(
         <div className={'modal'}>
@@ -36,3 +34,4 @@ export const ModalEdit:React.FC<ModalProps>=({title,isOpen,onClose,children})=>{
         </div>
     ):null;
 };
+
